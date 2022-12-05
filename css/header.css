@@ -1,0 +1,11 @@
+header{
+    height: 15%;
+    background: rgba(94, 30, 124, 0.46);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height: 95%;
+}

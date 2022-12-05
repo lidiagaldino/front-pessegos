@@ -1,0 +1,45 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    margin: 5%;
+    gap: 5%;
+}
+
+h1{
+    font-family: 'Julius Sans One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    text-align: center;
+    color: #000000;
+}
+
+.actions_container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+span{
+    font-family: 'Jua';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #000000;
+    height: 50px;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header_client.css">
+    <link rel="stylesheet" href="../css/style_client.css">
+    <script defer src="../js/client.js" type="module"></script>
+    <title>Pessego's Pizzaria</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1738/1738046.png">
+</head>
+<body>
+    <header>
+        <img class="logo" src="../img/logo.png" alt="">
+
+        <nav>
+            <ul>
+                <li><a href="#pizza">Pizzas</a></li>
+                <li><a href="#bebida">Bebidas</a></li>
+                <li><a href="#promocoes">Ofertas</a></li>
+                <li><a href="#favoritas">Favoritas</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contate-nos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="pizzas-container" id="pizza">
+            <h2>
+                <img src="../img/pizza_icon.png" alt="">
+                Pizzas
+            </h2>
+
+            <div class="slider-container" id="slider">
+                <ul class="slider-list" id="slider-list"></ul>
+            </div>
+        </div>
+        
+        <div class="bebidas-container" id="bebida">
+            <h2>
+                <img src="../img/bebida.png" alt="">
+                Bebidas
+            </h2>
+
+            <div class="slider-container" id="slider-bebida">
+                <ul class="slider-list" id="slider-list-bebida"></ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="faixa"></div>
+            <img src="../img/fav-icon.png" alt="">
+            <div class="faixa"></div>
+        </div>
+
+        <div class="favoritas" id="favoritas">
+            <h2>Favoritas</h2>
+
+            <div class="slider-container favoritas" id="slider-favoritas">
+                <ul class="slider-list" id="slider-list-favoritas"></ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="faixa"></div>
+            <img src="../img/fav-icon.png" alt="">
+            <div class="faixa"></div>
+        </div>
+
+        <div class="promocoes favoritas" id="promocoes">
+
+            <h2>Ofertas</h2>
+
+            <div class="slider-container favoritas" id="slider-ofertas">
+                <ul class="slider-list" id="slider-list-ofertas"></ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="faixa"></div>
+            <img src="../img/fav-icon.png" alt="">
+            <div class="faixa"></div>
+        </div>
+
+        <div class="servicos favoritas" id="servicos">
+
+            <h2>Nossos serviços</h2>
+
+             <div class="servicos-container">
+                <div class="item delivery">
+                    <img src="../img//delivery.png" alt="">
+                    <span class="tit">Delivery</span>
+                </div>
+                <div class="item drive">
+                    <img src="../img/drive.png" alt="">
+                    <span class="tit">Drive-Thru</span>
+                </div>
+                <div class="item retirar">
+                    <img src="../img/retirar.png" alt="">
+                    <span class="tit">Retirar na loja</span>
+                </div>
+             </div>
+        </div>
+
+        <div class="section">
+            <div class="faixa"></div>
+            <img src="../img/fav-icon.png" alt="">
+            <div class="faixa"></div>
+        </div>
+
+        <div class="contato favoritas" id="contato">
+            <h2>Contate-nos</h2>
+
+                <div class="dados-contato">  
+                    <div class="container-dados">
+                        <span class="text-dados">  NOS ENCONTRE NA:  </span>
+                        <span class="text-dados">  Av. Luis Carlos Berrini, nº 666   </span>
+                        <span class="text-dados">  CONVERSE CONOSCO POR:</span>
+                        <span class="text-dados">  Telefone: 6666-6666 </span>
+                        <span class="text-dados">  Email: pessegospizza@gmail.com</span>
+                    </div>
+                        
+                            
+                     <div class="mensagem-child">
+                        <form>
+                            <div class="item-form">
+                                <label for="name">Digite seu nome:</label>
+                                <input required type="text" id="name" name="name">
+                            </div>
+                            
+
+                            <div class="item-form">
+                                <label for="email">Digite seu email:</label>
+                                <input required type="email" id="email" name="email">
+                            </div>
+
+                            <div class="item-form msg">
+                                <label for="texto">Deixe sua mensagem ou sugestão:</label>
+                                <input required type="text" id="texto" name="texto" maxlength="200">
+                                <span class="limit"></span>
+                            </div>
+
+                            
+                            
+                        </form>
+                        <button class="enviar" id="enviar" type="button">Enviar</button>
+                    </div>
+                </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
