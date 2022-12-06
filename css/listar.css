@@ -24,3 +24,45 @@ h1{
     font-size: 2rem;
     line-height: 49px;
 }
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2%;
+    gap: 5%;
+}
+
+.card-user{
+    position: relative;
+    display: flex;
+    height: 250px;
+    width: 210px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-user img{
+    height: 90%;
+    width: 100%;
+}
+
+.card-user span{
+    font-family: 'Jua';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+}
+
+.link{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}

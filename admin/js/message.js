@@ -1,4 +1,4 @@
-import './elementos/card-mensagem.js'
+import '../../js/elementos/card-mensagem.js'
 
 const getMessages = async () => {
 

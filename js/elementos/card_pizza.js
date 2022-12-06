@@ -27,7 +27,6 @@ class CardPizza extends HTMLElement{
             <div class="overlay">
                 <div class="head">
                     <span class="preco">${this.preco}</span>
-                    <span class="star">⭐</span>
                 </div>
                 <span class="descricao">${this.descricao}</span>
             </div>
@@ -102,6 +101,13 @@ class CardPizza extends HTMLElement{
                 padding: 10px;
                 display: flex;
                 flex-wrap- wrap;
+                font-family: 'Julius Sans One';
+                font-style: normal;
+                font-weight: 100;
+                font-size: 20px;
+                line-height: 30px;
+
+                color: rgba(107, 0, 0, 0.5);
             }
 
             .title{
@@ -111,11 +117,30 @@ class CardPizza extends HTMLElement{
                 align-items: center;
                 padding: 10px;
                 background: #FEEAEA;
+                font-family: 'Jua';
+                font-style: normal;
+                font-weight: 100;
+                font-size: 20px;
+                line-height: 30px;
+
+                color: rgba(107, 0, 0, 0.5);
 
             }
 
             .type-icon{
                 height: 20px;
+            }
+
+            .preco{
+                display: flex;
+                font-family: 'Jua';
+                font-style: normal;
+                margin-top: 2%;
+                font-weight: 100;
+                font-size: 2rem;
+                line-height: 20px;
+
+                color: rgba(107, 0, 0, 0.5);
             }
         `
 

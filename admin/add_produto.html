@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/add_produto.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <script defer src=""></script>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1738/1738046.png">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="../img/logo.png" alt="">
+    </header>
+
+    <main>
+        <h1>
+            <img src="../img/logo_pizza.png" alt="">
+            CADASTRE UM NOVO PRODUTO
+        </h1>
+
+        <div class="container">
+            <form> 
+            <div class="primeira-coluna">
+
+                <span class="foto-text" >ESCOLHA UMA FOTO</span>
+                <div class="add-foto"></div>
+                <input placeholder="Digite o teor alcoolico" type="number" name="teor" id="teor">
+
+            </div>
+
+            <div class="segunda-coluna">
+
+                <input placeholder="Nome:" type="text" name="nome" id="nome">
+                <input placeholder="Ingredientes:" type="text" name="ingredientes" id="ingredientes">
+
+                <div class="container-op">
+                    <div class="op">
+                        <label for="pizza">Pizza</label>
+                        <input type="radio" name="pizza" id="pizza">
+                    </div>
+                    <div class="op">
+                        <label for="bebida">Bebida</label>
+                        <input type="radio" name="bebida" id="bebida">
+                    </div>
+                
+                </div>
+                
+                <input placeholder="tipo" type="text" name="tipo" id="tipo">
+
+            </div>
+
+            <div class="terceira-coluna">
+
+                <input placeholder="Preço"  type="number" name="preco" id="preco">
+                <label for="tamanho">Tamanho</label>
+                <input type="text" name="tamanho" id="tamanho">
+                <button class="enviar" id="enviar" type="button">Cadastrar</button>
+
+            </div>
+        </form>
+        </div>
+
+    </main>
+
+    <footer></footer>
+</body>
+</html>
