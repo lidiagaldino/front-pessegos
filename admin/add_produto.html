@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/add_produto.css">
     <link rel="stylesheet" href="../css/header.css">
-    <script defer src=""></script>
+    <script defer src="./js/add-produto.js"></script>
+    <script src="https://kit.fontawesome.com/36fb6fc507.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1738/1738046.png">
     <title>Adicionar Produto</title>
 </head>
@@ -29,39 +30,61 @@
         <div class="container">
             <form> 
             <div class="primeira-coluna">
+                <span class="foto-text">
+                <img src="../img/camera.png" alt="">
+                ESCOLHA UMA FOTO</span>
 
-                <span class="foto-text" >ESCOLHA UMA FOTO</span>
-                <div class="add-foto"></div>
-                <input placeholder="Digite o teor alcoolico" type="number" name="teor" id="teor">
+                <label class="fake-input" for="foto">
+                    <i class="fa-solid fa-plus"></i>
+                </label>
+                <input class="input-photo" type="file" name="foto" id="foto" required>
+                <input class="hide-input" placeholder="Digite o teor alcoolico" type="number" name="teor" id="teor">
 
             </div>
 
             <div class="segunda-coluna">
 
-                <input placeholder="Nome:" type="text" name="nome" id="nome">
-                <input placeholder="Ingredientes:" type="text" name="ingredientes" id="ingredientes">
+                <input placeholder="Nome" type="text" name="nome" id="nome" required>
+                <input placeholder="Ingredientes" type="text" name="ingredientes" id="ingredientes" required>
 
                 <div class="container-op">
                     <div class="op">
-                        <label for="pizza">Pizza</label>
-                        <input type="radio" name="pizza" id="pizza">
+                        <label class="radio" for="pizza">Pizza</label>
+                        <input type="radio" name="radio" id="pizza">
                     </div>
                     <div class="op">
-                        <label for="bebida">Bebida</label>
-                        <input type="radio" name="bebida" id="bebida">
+                        <label class="radio" for="bebida">Bebida</label>
+                        <input type="radio" name="radio" id="bebida">
                     </div>
                 
                 </div>
                 
-                <input placeholder="tipo" type="text" name="tipo" id="tipo">
+                <div class="box">
+                    <select>
+                      <option>Grande</option>
+                      <option>Medio</option>
+                      <option>Option 3</option>
+                      <option>Option 4</option>
+                      <option>Option 5</option>
+                    </select>
+                  </div>
+
 
             </div>
 
             <div class="terceira-coluna">
 
-                <input placeholder="Preço"  type="number" name="preco" id="preco">
-                <label for="tamanho">Tamanho</label>
-                <input type="text" name="tamanho" id="tamanho">
+                <input placeholder="Preço"  type="number" name="preco" id="preco" required>
+                <input placeholder="Desconto (opcional)"  type="number" name="desconto" id="desconto" required>
+                
+                <div class="box">
+                    <select>
+                      <option>Grande</option>
+                      <option>Medio</option>
+                      <option>Pequeno</option>
+                    </select>
+                  </div>
+
                 <button class="enviar" id="enviar" type="button">Cadastrar</button>
 
             </div>

@@ -55,10 +55,25 @@ const sendMessage = async (dados) => {
     return result
 }
 
+const addFavorito = async (id) => {
+
+    const url = `http://localhost:8080/v1/produtos/favoritos/${id}`
+
+    const options = {
+        method: 'PUT'
+    }
+
+    const result = await fetch(url, options)
+
+    return result
+
+}
+
 export{
     getPizzas,
     getBebidas,
     getFavoritos,
     getOfertas,
-    sendMessage
+    sendMessage,
+    addFavorito
 }
