@@ -4,20 +4,27 @@ const container = document.querySelector('.container-op')
 const bebida = document.getElementById('bebida')
 const pizza = document.getElementById('pizza')
 
+import { uploadImage } from "./firebase.js"
+import { preview } from "./preview.js"
+
+const selectTipo = document.getElementById('dropdown-tipos')
+const selectTamanho = document.getElementById('dropdown-tamanhos')
+let tipo = 0
+let tamanho = 0
 
 const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desconto, tamanho) => {
 
     const url = `http://localhost:8080/v1/produtos/bebida`
 
     const produto = {
-        foto: foto,
-        teor: teor, 
+        imagem: foto,
+        teor_alcoolico: teor, 
         nome: nome, 
-        ingredientes: ingredientes,
-        tipo: tipo,
+        descricao: ingredientes,
+        id_tipo_bebida: tipo,
         preco: preco, 
         desconto: desconto, 
-        tamanho: tamanho
+        id_tamanho: tamanho
     }
 
     const options = {
@@ -29,8 +36,9 @@ const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desco
     }
 
     const result = await fetch(url, options)
+    console.log(result);
 
-    if (result.status = 201) {
+    if (result) {
         return true
     } else{
         return false
@@ -42,13 +50,13 @@ const adicionarPizza = async (foto, nome, ingredientes, tipo, preco, desconto, t
     const url = `http://localhost:8080/v1/produtos/pizza`
 
     const produto = {
-        foto: foto,
+        imagem: foto,
         nome: nome, 
-        ingredientes: ingredientes,
-        tipo: tipo,
+        descricao: ingredientes,
+        id_tipo_pizza: tipo,
         preco: preco, 
         desconto: desconto, 
-        tamanho: tamanho
+        id_tamanho: tamanho
     }
 
     const options = {
@@ -61,7 +69,7 @@ const adicionarPizza = async (foto, nome, ingredientes, tipo, preco, desconto, t
 
     const result = await fetch(url, options)
 
-    if (result.status = 201) {
+    if (result) {
         return true
     } else{
         return false
@@ -71,20 +79,31 @@ const adicionarPizza = async (foto, nome, ingredientes, tipo, preco, desconto, t
 const criarProduto = async () => {
 
     const formulario = document.getElementById('form')
-    const foto = document.getElementById('foto').value
-    const teor = document.getElementById('teor').value
     const nome = document.getElementById('nome').value
     const ingredientes = document.getElementById('ingredientes').value
-    const tipo = document.getElementById('tipo').value
     const preco = document.getElementById('preco').value
     const desconto = document.getElementById('desconto').value
+    const foto = await saveImage()
+
+    if (tamanho == '') {
+        tamanho = 1
+    }
 
     if(formulario.reportValidity()){
-        const result = 0
+        let result = false
         if (bebida.checked) {
+            if (tipo == '') {
+                tipo = 1
+            }
+
+            
+            const teor = document.getElementById('teor').value
             result = await adicionarBebida(foto, teor, nome, ingredientes, tipo, preco, desconto, tamanho)
         }
         else if (pizza.checked) {
+            if (tipo == '') {
+                tipo = 'Pizza doce'
+            }
             result = await adicionarPizza(foto, nome, ingredientes, tipo, preco, desconto, tamanho)
         }
         else{
@@ -104,7 +123,95 @@ const criarProduto = async () => {
 
 }
 
-document.querySelector('button').addEventListener('click', criarProduto)
+const getTipos = async (tipo) => {
+
+    const url = `http://localhost:8080/v1/tipo/${tipo}`
+
+    const response = await fetch(url)
+
+    const tipos = await response.json()
+
+    return tipos
+}
+
+const getTamanhos = async () => {
+
+    const url = `http://localhost:8080/v1/produtos/tamanho`
+
+    const response = await fetch(url)
+
+    const tamanhos = await response.json()
+
+    return tamanhos
+}
+
+const createTipos = (data) => {
+
+    const op = document.createElement('option')
+    op.textContent = data.tipo
+    op.id = data.id
+    op.value = data.tipo
+
+    return op
+}
+
+const loadTipos = async () => {
+
+    const container = document.getElementById('dropdown-tipos')
+    let tipo = ''
+
+    if (bebida.checked) {
+        tipo = 'bebida'
+    } else{
+        tipo = 'pizza'
+    }
+
+    const data = await getTipos(tipo)
+
+    const cards = data.message.map(createTipos)
+
+    container.replaceChildren(...cards)
+
+}
+
+const createTamanhos = (data) => {
+
+    const op = document.createElement('option')
+
+    op.textContent = data.nome
+    op.id = data.id
+    op.value = data.nome
+
+    return op
+}
+
+const loadTamanhos = async () => {
+
+    const container = document.getElementById('dropdown-tamanhos')
+
+    const data = await getTamanhos()
+
+    const cards = data.message.map(createTamanhos)
+
+    container.replaceChildren(...cards)
+
+}
+
+const saveImage = async () => {
+    const image = document.getElementById('foto').files[0]
+    
+    const name = document.getElementById('nome').value
+    const namePhoto = name.replace(' ', '-').toLowerCase()
+
+    const urlImage = await uploadImage(image, namePhoto)
+
+    console.log(urlImage);
+    return urlImage
+}
+
+document.getElementById('enviar').addEventListener('click', criarProduto)
+loadTamanhos()
+loadTipos()
 
 container.addEventListener('change', () => {
     if(bebida.checked){
@@ -115,4 +222,20 @@ container.addEventListener('change', () => {
         teorContainer.classList.add('hide-input')
         teorContainer.classList.remove('show-input')
     }
+
+    loadTipos()
 })
+
+selectTamanho.addEventListener('change', () => {
+    tamanho = selectTamanho.options[selectTamanho.selectedIndex].id
+})
+
+selectTipo.addEventListener('change', () => {
+    tipo = selectTipo.options[selectTipo.selectedIndex].id
+})
+
+const imagePreview = () => {
+    preview()
+}
+
+document.getElementById('foto').addEventListener('change', imagePreview)

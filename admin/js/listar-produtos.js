@@ -35,11 +35,22 @@ const createProdutos = (data) => {
     const img = document.createElement('img')
     img.classList.add('icon-image')
     img.src = data.imagem
+    console.log(data);
 
     const name = document.createElement('span')
     name.textContent = data.nome
 
-    a.id = data.id
+    if (data.id_pizza) {
+        a.id = data.id_pizza
+    } else{
+        a.id = data.id_bebida
+    }
+
+    if (data.teor_alcoolico != null) {
+        a.classList.add('bebida')
+    } else{
+        a.classList.add('pizza')
+    }
     card.appendChild(a)
     card.appendChild(img)
     card.appendChild(name)
@@ -56,4 +67,10 @@ const loadProdutos = async () => {
     container.replaceChildren(...cards)
 }
 
+container.addEventListener('click', (event) => {
+    if (event.target.classList.contains('link')) {
+        localStorage.setItem('id_produto', event.target.id)
+        localStorage.setItem('tipo', event.target.classList.value.split(' ')[1])
+    }
+})
 loadProdutos()

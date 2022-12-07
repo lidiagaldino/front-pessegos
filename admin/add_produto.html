@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/add_produto.css">
     <link rel="stylesheet" href="../css/header.css">
-    <script defer src="./js/add-produto.js"></script>
+    <script defer src="./js/add-produto.js" type="module"></script>
     <script src="https://kit.fontawesome.com/36fb6fc507.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1738/1738046.png">
     <title>Adicionar Produto</title>
@@ -28,14 +28,15 @@
         </h1>
 
         <div class="container">
-            <form> 
+            <form id="form"> 
             <div class="primeira-coluna">
                 <span class="foto-text">
                 <img src="../img/camera.png" alt="">
                 ESCOLHA UMA FOTO</span>
 
-                <label class="fake-input" for="foto">
+                <label id="file" class="fake-input" for="foto">
                     <i class="fa-solid fa-plus"></i>
+                    <img src="" alt="" id="preview">
                 </label>
                 <input class="input-photo" type="file" name="foto" id="foto" required>
                 <input class="hide-input" placeholder="Digite o teor alcoolico" type="number" name="teor" id="teor">
@@ -60,13 +61,7 @@
                 </div>
                 
                 <div class="box">
-                    <select>
-                      <option>Grande</option>
-                      <option>Medio</option>
-                      <option>Option 3</option>
-                      <option>Option 4</option>
-                      <option>Option 5</option>
-                    </select>
+                    <select id="dropdown-tipos"></select>
                   </div>
 
 
@@ -74,15 +69,11 @@
 
             <div class="terceira-coluna">
 
-                <input placeholder="Preço"  type="number" name="preco" id="preco" required>
+                <input placeholder="Preço"  type="number" name="preco" id="preco" step="0.25" value="0.00" required>
                 <input placeholder="Desconto (opcional)"  type="number" name="desconto" id="desconto" required>
                 
                 <div class="box">
-                    <select>
-                      <option>Grande</option>
-                      <option>Medio</option>
-                      <option>Pequeno</option>
-                    </select>
+                    <select id="dropdown-tamanhos"></select>
                   </div>
 
                 <button class="enviar" id="enviar" type="button">Cadastrar</button>

@@ -1,12 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/editar_produto.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <script defer src="./js/editar_produto.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/36fb6fc507.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1738/1738046.png">
+    <title>Editar Produto</title>
 </head>
 <body>
-    
+    <header>
+        <img class="logo" src="../img/logo.png" alt="">
+    </header>
+
+    <main>
+        <h1>
+            <img src="../img/logo_pizza.png" alt="">
+            ATUALIZE UM PRODUTO
+        </h1>
+
+        <div class="container">
+            <form id="form"> 
+            <div class="primeira-coluna">
+                <span class="foto-text">
+                <img src="../img/camera.png" alt="">
+                ESCOLHA UMA FOTO</span>
+
+                <label id="file" class="fake-input" for="foto">
+                    <i class="fa-solid fa-plus"></i>
+                    <img src="" alt="" id="preview">
+                </label>
+                <input class="input-photo" type="file" name="foto" id="foto" required>
+                <input class="hide-input" placeholder="Digite o teor alcoolico" type="number" name="teor" id="teor">
+
+            </div>
+
+            <div class="segunda-coluna">
+
+                <input placeholder="Nome" type="text" name="nome" id="nome" required>
+                <input placeholder="Ingredientes" type="text" name="ingredientes" id="ingredientes" required>
+                
+                <div class="box">
+                    <select id="dropdown-tipos"></select>
+                  </div>
+
+
+            </div>
+
+            <div class="terceira-coluna">
+
+                <input placeholder="Preço"  type="number" name="preco" id="preco" step="0.25" value="0.00" required>
+                <input placeholder="Desconto (opcional)"  type="number" name="desconto" id="desconto" required>
+                
+                <div class="box">
+                    <select id="dropdown-tamanhos"></select>
+                  </div>
+
+                <button class="enviar" id="enviar" type="button">Cadastrar</button>
+
+            </div>
+        </form>
+        </div>
+
+    </main>
+
+    <footer></footer>
 </body>
 </html>
