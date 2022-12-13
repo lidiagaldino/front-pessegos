@@ -193,3 +193,84 @@ input:focus{
 .star-active{
     fill: yellow;
 }
+
+@media only screen and (max-device-width: 700px) {
+    .menu { width:400px; }
+
+
+    .item-form{
+        display: flex;
+        gap: 10px;
+    }
+    
+    .item-form input{
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 35%;
+        
+    }
+
+    .servicos-container{
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.3rem;
+        line-height: 60px;
+        flex-direction: column;
+    }
+    
+    .contato{
+        display: flex;
+        height: auto;
+        width: 100vw;
+        flex-direction: column;
+    }
+    
+    .dados-contato{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .container-dados{
+        display: none;
+    }
+    
+    .mensagem-child{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        width: 100%;
+        height: 100%;
+        border-radius: 40px;
+        font-family: 'Jua';
+        flex-direction: column;
+        padding-left: 8%;
+        padding-top: 3%;
+        color:rgba(0, 0, 0, 0.5);
+        gap: 20px;
+    }
+    
+    .text-dados{
+        text-align: start;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 0%;
+        margin-right: 30%;
+        font-family: 'Jua';
+        font-style: normal;
+        font-weight: 50;
+        font-size: 1rem;
+        line-height: 10px;
+        flex-direction: column;
+        color: white;
+        word-break: break-all;
+    
+    }
+
+
+}

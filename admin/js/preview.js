@@ -3,7 +3,7 @@ const preview = () => {
     const imagePreview = document.getElementById('file')
     const fileReader = new FileReader();
 
-    fileReader.onloadend = () => (imagePreview.style.background = `url(${fileReader.result}) center no-repeat`)
+    fileReader.onloadend = () => (imagePreview.style.background = `url(${fileReader.result}) no-repeat center`)
 
     if (file) {
         fileReader.readAsDataURL(file);

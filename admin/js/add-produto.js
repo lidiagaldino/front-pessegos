@@ -8,11 +8,15 @@ import { uploadImage } from "./firebase.js"
 import { preview } from "./preview.js"
 
 const selectTipo = document.getElementById('dropdown-tipos')
-const selectTamanho = document.getElementById('dropdown-tamanhos')
 let tipo = 0
-let tamanho = 0
 
-const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desconto, tamanho) => {
+const medio = document.querySelector('.input-medio')
+const grande = document.querySelector('.input-grande')
+const pequeno = document.querySelector('.input-pequeno')
+
+const tamanho = []
+
+const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, desconto, tamanho) => {
 
     const url = `http://localhost:8080/v1/produtos/bebida`
 
@@ -22,7 +26,6 @@ const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desco
         nome: nome, 
         descricao: ingredientes,
         id_tipo_bebida: tipo,
-        preco: preco, 
         desconto: desconto, 
         id_tamanho: tamanho
     }
@@ -36,7 +39,6 @@ const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desco
     }
 
     const result = await fetch(url, options)
-    console.log(result);
 
     if (result) {
         return true
@@ -46,15 +48,14 @@ const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, preco, desco
 
 } 
 
-const adicionarPizza = async (foto, nome, ingredientes, tipo, preco, desconto, tamanho) => {
+const adicionarPizza = async (foto, nome, ingredientes, tipo, desconto, tamanho) => {
     const url = `http://localhost:8080/v1/produtos/pizza`
 
     const produto = {
         imagem: foto,
         nome: nome, 
         descricao: ingredientes,
-        id_tipo_pizza: tipo,
-        preco: preco, 
+        id_tipo_pizza: tipo, 
         desconto: desconto, 
         id_tamanho: tamanho
     }
@@ -81,12 +82,21 @@ const criarProduto = async () => {
     const formulario = document.getElementById('form')
     const nome = document.getElementById('nome').value
     const ingredientes = document.getElementById('ingredientes').value
-    const preco = document.getElementById('preco').value
     const desconto = document.getElementById('desconto').value
     const foto = await saveImage()
 
-    if (tamanho == '') {
-        tamanho = 1
+    
+
+    if (medioCheck.checked) {
+        tamanho.push({id: medioCheck.id, preco: medio.value.replace(',', '.')})
+    }
+
+    if (grandeCheck.checked) {
+        tamanho.push({id: grandeCheck.id, preco: grande.value})
+    }
+
+    if (pequenoCheck.checked) {
+        tamanho.push({id: pequenoCheck.id, preco: pequeno.value})
     }
 
     if(formulario.reportValidity()){
@@ -96,15 +106,14 @@ const criarProduto = async () => {
                 tipo = 1
             }
 
-            
             const teor = document.getElementById('teor').value
-            result = await adicionarBebida(foto, teor, nome, ingredientes, tipo, preco, desconto, tamanho)
+            result = await adicionarBebida(foto, teor, nome, ingredientes, tipo, desconto, tamanho)
         }
         else if (pizza.checked) {
             if (tipo == '') {
                 tipo = 'Pizza doce'
             }
-            result = await adicionarPizza(foto, nome, ingredientes, tipo, preco, desconto, tamanho)
+            result = await adicionarPizza(foto, nome, ingredientes, tipo, desconto, tamanho)
         }
         else{
             alert('Escolha se é pizza ou bebida')
@@ -176,18 +185,28 @@ const loadTipos = async () => {
 
 const createTamanhos = (data) => {
 
-    const op = document.createElement('option')
+    const op = document.createElement('input')
+    const label = document.createElement('label')
+    label.textContent = data.nome
+    
+    label.classList.add('label-op')
+    label.classList.add(data.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase())
+    op.classList.add(data.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase())
+    op.classList.add('label-op')
+    op.classList.add(`${data.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()}-op`)
 
-    op.textContent = data.nome
+    op.type = "checkbox"
+
     op.id = data.id
     op.value = data.nome
 
-    return op
+    label.appendChild(op)
+    return label
 }
 
 const loadTamanhos = async () => {
 
-    const container = document.getElementById('dropdown-tamanhos')
+    const container = document.getElementById('check')
 
     const data = await getTamanhos()
 
@@ -226,9 +245,6 @@ container.addEventListener('change', () => {
     loadTipos()
 })
 
-selectTamanho.addEventListener('change', () => {
-    tamanho = selectTamanho.options[selectTamanho.selectedIndex].id
-})
 
 selectTipo.addEventListener('change', () => {
     tipo = selectTipo.options[selectTipo.selectedIndex].id
@@ -236,6 +252,50 @@ selectTipo.addEventListener('change', () => {
 
 const imagePreview = () => {
     preview()
+
 }
+
+let medioCheck = ''
+let grandeCheck = ''
+let pequenoCheck = ''
+
+document.getElementById('check').addEventListener('click', (event) => {
+    console.log(event.target)
+    if (event.target.classList.contains('label-op')) {
+
+        medioCheck = document.querySelector('.medio-op')
+        grandeCheck = document.querySelector('.grande-op')
+        pequenoCheck = document.querySelector('.pequeno-op')
+        console.log(medioCheck)
+
+        if (medioCheck.checked) {
+            medio.classList.remove('hide-input')
+            medio.classList.add('show-input')
+        } else{
+            medio.classList.add('hide-input')
+            medio.classList.remove('show-input')
+            medio.value = null
+        }
+
+        if (grandeCheck.checked) {
+            grande.classList.remove('hide-input')
+            grande.classList.add('show-input')
+        } else{
+            grande.classList.add('hide-input')
+            grande.classList.remove('show-input')
+            grande.value = null
+        }
+
+        if (pequenoCheck.checked) {
+            pequeno.classList.remove('hide-input')
+            pequeno.classList.add('show-input')
+        } else{
+            pequeno.classList.add('hide-input')
+            pequeno.classList.remove('show-input')
+            pequeno.value = null
+        }
+       
+    }
+})
 
 document.getElementById('foto').addEventListener('change', imagePreview)

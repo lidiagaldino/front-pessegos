@@ -52,6 +52,13 @@ class CardMensagem extends HTMLElement{
                 width: 90%;
                 border-bottom: 2px solid rgba(0, 0, 0, 0.5);
             }
+
+            @media only screen and (max-device-width: 700px){
+                .card{
+                    height: 200px;
+                    width: 300px
+                }
+            }
         `
 
         return style

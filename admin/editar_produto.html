@@ -57,12 +57,15 @@
 
             <div class="terceira-coluna">
 
-                <input placeholder="Preço"  type="number" name="preco" id="preco" step="0.25" value="0.00" required>
                 <input placeholder="Desconto (opcional)"  type="number" name="desconto" id="desconto" required>
                 
-                <div class="box">
-                    <select id="dropdown-tamanhos"></select>
-                  </div>
+                <div id="check" class="op"></div>
+
+                <div class="inputs" id="inputs">
+                    <input class="hide-input input-grande tamanho-input" placeholder="Preço (Grande)"  type="number" name="preco" id="precoGrande" step="0.1">
+                    <input class="hide-input input-medio tamanho-input" placeholder="Preço (Médio)"  type="number" name="preco" id="precoMedio" step="0.1">
+                    <input class="hide-input input-pequeno tamanho-input" placeholder="Preço (Pequeno)"  type="number" name="preco" id="precoPequeno" step="0.1">
+                </div>
 
                 <button class="enviar" id="enviar" type="button">Cadastrar</button>
 

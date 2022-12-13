@@ -18,7 +18,16 @@ const createPizzas = (data) => {
 
     cardPizza.type = 'https://cdn-icons-png.flaticon.com/512/1404/1404945.png'
 
-    cardPizza.preco = 'R$ ' + data.preco
+    if (data.preco_desconto != null) {
+        cardPizza.preco_promocao = 'R$ ' + data.preco
+        cardPizza.preco = 'R$ ' + data.preco_desconto
+    }  else{
+        cardPizza.preco = 'R$ ' + data.preco
+    }
+
+    
+    
+    
     cardPizza.descricao = data.descricao
     container.appendChild(cardPizza)
     container.appendChild(star)
@@ -52,7 +61,12 @@ const createBebidas = (data) => {
 
     cardBebida.type = '../img/bebida-icon.png'
 
-    cardBebida.preco = 'R$ ' + data.preco
+    if (data.preco_desconto != null) {
+        cardBebida.preco_promocao = 'R$ ' + data.preco
+        cardBebida.preco = 'R$ ' + data.preco_desconto
+    }  else{
+        cardBebida.preco = 'R$ ' + data.preco
+    }
 
     const descricao = `${data.descricao}`
 

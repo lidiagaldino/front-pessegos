@@ -9,3 +9,23 @@ header{
 .logo{
     height: 95%;
 }
+
+@media only screen and (max-device-width: 700px) {
+    .menu { width:400px; }
+
+    header{
+        height: 15%;
+        width: 100%;
+        background: rgba(94, 30, 124, 0.46);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo{
+        height: 100%;
+    }
+
+
+
+}

@@ -80,3 +80,12 @@ button{
     color: #FFFFFF;
 }
 
+@media only screen and (max-device-width: 700px) {
+    .menu { width:400px; }
+
+    button{
+        width: 40%;
+        font-size: 1.5rem;
+        line-height: 30px;
+    }
+}
