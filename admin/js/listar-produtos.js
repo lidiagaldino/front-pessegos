@@ -41,9 +41,9 @@ const createProdutos = (data) => {
     name.textContent = data.nome
 
     if (data.id_pizza) {
-        a.id = data.id_pizza
+        a.id = `${data.id_pizza}-${data.id_produto}`
     } else{
-        a.id = data.id_bebida
+        a.id = `${data.id_bebida}-${data.id_produto}`
     }
 
     if (data.teor_alcoolico != null) {
@@ -61,6 +61,8 @@ const createProdutos = (data) => {
 const loadProdutos = async () => {
 
     const data = await getProdutos()
+
+    const produtos = []
 
     const cards = data.map(createProdutos)
 

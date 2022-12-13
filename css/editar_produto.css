@@ -231,6 +231,42 @@ button{
     gap: 20px;
   }
 
+  .container-tamanho{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .adicionar{
+    width: auto;
+    font-size: 1rem;
+    padding: 10px;
+
+  }
+
+
+  dialog{
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .dialog-button{
+    background-color: #f3d0e7;
+    border-radius: 0;
+    width: auto;
+    color: black;
+    padding: 10px;
+  }
+
+
+
   @media only screen and (max-device-width: 700px) {
     .menu { width:400px; }
 

@@ -23,10 +23,12 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    height: auto;
     gap: 10%;
 }
 
 .action{
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
