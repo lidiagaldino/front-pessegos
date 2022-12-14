@@ -15,6 +15,7 @@ const createPizzas = (data) => {
 
     cardPizza.nome = data.nome
     cardPizza.foto = data.imagem
+    cardPizza.tamanho = data.tamanho
 
     cardPizza.type = 'https://cdn-icons-png.flaticon.com/512/1404/1404945.png'
 
@@ -58,6 +59,7 @@ const createBebidas = (data) => {
 
     cardBebida.nome = data.nome
     cardBebida.foto = data.imagem
+    cardBebida.tamanho = data.tamanho
 
     cardBebida.type = '../img/bebida-icon.png'
 

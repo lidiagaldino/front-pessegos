@@ -224,7 +224,6 @@ const saveImage = async () => {
 
     const urlImage = await uploadImage(image, namePhoto)
 
-    console.log(urlImage);
     return urlImage
 }
 

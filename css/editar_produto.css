@@ -358,4 +358,18 @@ button{
         line-height: 20px;
         font-weight: 300;
     }
+
+    .adicionar{
+        width: 90%;
+        height: 100%;
+        font-size: 1.2rem;
+        padding: 0px;
+    
+      }
+
+    .desativar{
+        width: 90%;
+        height: 100%;
+        font-size: 1.2rem;
+      }
   }

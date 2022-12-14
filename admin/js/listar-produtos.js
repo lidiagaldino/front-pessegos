@@ -1,3 +1,5 @@
+const select = document.getElementById('ativo-inativo')
+
 const getProdutos = async () => {
 
     const urlBebidas = `http://localhost:8080/v1/produtos/bebida`
@@ -19,7 +21,57 @@ const getProdutos = async () => {
         array.push(element)
     })
 
+    array.forEach(item => {
+        item.tamanho = ''
+        item.preco = ''
+        item.preco_desconto = ''
+    })
+
+    console.log(array)
+
+    const arrayFinal = array.filter((element, index) => {
+        console.log(array.indexOf(element))
+        return array.indexOf(element) == index
+    })
+
+    console.log(arrayFinal)
+
     return array
+}
+
+const getInativos = async () => {
+
+    const array = []
+
+    const urlPizza = `http://localhost:8080/v1/produtos/ativo/pizza`
+    const urlBebida = `http://localhost:8080/v1/produtos/ativo/bebida`
+
+    const responsePizza = await fetch(urlPizza)
+    const responseBebida = await fetch(urlBebida)
+
+    const resultPizza = await responsePizza.json()
+    const resultBebida = await responseBebida.json()
+
+    if (resultBebida.status == 200) {
+        resultBebida.message.forEach(element => {
+            array.push(element)
+        })
+    }
+
+    if(resultPizza.status == 200){
+        resultPizza.message.forEach(element => {
+            array.push(element)
+        })
+    }
+
+    const arrayFinal = array.filter((element, index) => {
+        console.log(array.indexOf(element.nome) == index)
+        return array.indexOf(element.nome) == index
+    })
+
+    console.log(arrayFinal)
+
+    return arrayFinal
 }
 
 const container = document.getElementById('container')
@@ -35,7 +87,10 @@ const createProdutos = (data) => {
     const img = document.createElement('img')
     img.classList.add('icon-image')
     img.src = data.imagem
-    console.log(data);
+    
+    if (data.stat == 0) {
+        img.style.filter = 'grayscale(60%)'
+    }
 
     const name = document.createElement('span')
     name.textContent = data.nome
@@ -60,14 +115,24 @@ const createProdutos = (data) => {
 
 const loadProdutos = async () => {
 
-    const data = await getProdutos()
+    let data = []
 
-    const produtos = []
+    if (select.options[select.selectedIndex].value == 'inativo') {
+        data = await getInativos()
+    } else{
+        data = await getProdutos()
+    }
+
+    console.log(data)
+
+    
 
     const cards = data.map(createProdutos)
 
     container.replaceChildren(...cards)
 }
+
+document.getElementById('ativo-inativo').addEventListener('change', loadProdutos)
 
 container.addEventListener('click', (event) => {
     if (event.target.classList.contains('link')) {

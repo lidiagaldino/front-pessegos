@@ -7,7 +7,7 @@ class CardPizza extends HTMLElement{
     }
 
     static get observedAttributes() {
-        return ['nome', 'foto', 'type', 'preco', 'descricao', 'preco_promocao']
+        return ['nome', 'foto', 'type', 'preco', 'descricao', 'preco_promocao', 'tamanho']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue) {
@@ -30,6 +30,7 @@ class CardPizza extends HTMLElement{
                     <span class="preco">${this.preco}</span>
                     <span class="preco preco_promocao">${this.preco_promocao}</span>
                 </div>
+                <span class="descricao">${this.tamanho}</span>
                 <span class="descricao">${this.descricao}</span>
             </div>
         </div>
@@ -84,7 +85,6 @@ class CardPizza extends HTMLElement{
                 opacity: 0;
                 transition: .5s ease;
                 background: rgba(254, 234, 234, 0.8);
-                gap: 30px;
             }
 
             .container:hover .overlay{
@@ -101,7 +101,7 @@ class CardPizza extends HTMLElement{
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                padding: 10px;
+                padding: 5px;
             }
 
             .descricao{

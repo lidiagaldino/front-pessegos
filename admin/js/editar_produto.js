@@ -243,7 +243,7 @@ const createTamanhos = (data) => {
 
 const loadTamanhosProduto = async () => {
 
-    const add = document.getElementById('adicionar')
+    const add = document.getElementById('adicionar-tamanho')
     const container = document.getElementById('check')
 
     const cards = produto.map(createTamanhos)
@@ -388,7 +388,6 @@ document.getElementById('send').addEventListener('click', async () => {
     const valor = select.options[select.selectedIndex].id
 
     const preco = document.getElementById('precoNovo').value
-    const form = document.getElementById('formDialog')
 
     const result = await addTamanho(preco, valor)
     
@@ -407,6 +406,31 @@ document.getElementById('foto').addEventListener('change', imagePreview)
 
 selectTipo.addEventListener('change', () => {
     tipo = selectTipo.options[selectTipo.selectedIndex].id
+})
+
+const desativarProduto = async (id) => {
+
+    const url = `http://localhost:8080/v1/produtos/${id}`
+
+    const response = await fetch(url, {method: 'PUT'})
+    const result = await response.json()
+
+    return result
+}
+
+document.getElementById('desativar').addEventListener('click', async () => {
+    const resultado = confirm('Deseja realmente desativar/reativar esse produto?')
+
+    if (resultado) {
+        const result = await desativarProduto(localStorage.getItem('id_produto').split('-')[1])
+
+        if (result) {
+            alert('Produto atualizado com sucesso')
+            open('./listar_produtos.html')
+        }else{
+            alert('Falha ao tentar atualizar')
+        }
+    }
 })
 
 loadInputs()
