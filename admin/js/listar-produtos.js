@@ -2,8 +2,8 @@ const select = document.getElementById('ativo-inativo')
 
 const getProdutos = async () => {
 
-    const urlBebidas = `http://localhost:8080/v1/produtos/bebida`
-    const urlPizza = `http://localhost:8080/v1/produtos/pizza`
+    const urlBebidas = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/bebida`
+    const urlPizza = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/pizza`
 
     const responseBebidas = await fetch(urlBebidas)
     const responsePizzas = await fetch(urlPizza)
@@ -43,8 +43,8 @@ const getInativos = async () => {
 
     const array = []
 
-    const urlPizza = `http://localhost:8080/v1/produtos/ativo/pizza`
-    const urlBebida = `http://localhost:8080/v1/produtos/ativo/bebida`
+    const urlPizza = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/ativo/pizza`
+    const urlBebida = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/ativo/bebida`
 
     const responsePizza = await fetch(urlPizza)
     const responseBebida = await fetch(urlBebida)

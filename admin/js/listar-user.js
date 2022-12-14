@@ -1,6 +1,6 @@
 const getUsers = async () => {
 
-    const url = `http://localhost:8080/v1/usuario`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/usuario`
 
     const response = await fetch(url)
 

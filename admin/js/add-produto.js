@@ -18,7 +18,7 @@ const tamanho = []
 
 const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, desconto, tamanho) => {
 
-    const url = `http://localhost:8080/v1/produtos/bebida`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/bebida`
 
     const produto = {
         imagem: foto,
@@ -49,7 +49,7 @@ const adicionarBebida = async(foto, teor, nome, ingredientes, tipo, desconto, ta
 } 
 
 const adicionarPizza = async (foto, nome, ingredientes, tipo, desconto, tamanho) => {
-    const url = `http://localhost:8080/v1/produtos/pizza`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/pizza`
 
     const produto = {
         imagem: foto,
@@ -134,7 +134,7 @@ const criarProduto = async () => {
 
 const getTipos = async (tipo) => {
 
-    const url = `http://localhost:8080/v1/tipo/${tipo}`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/tipo/${tipo}`
 
     const response = await fetch(url)
 
@@ -145,7 +145,7 @@ const getTipos = async (tipo) => {
 
 const getTamanhos = async () => {
 
-    const url = `http://localhost:8080/v1/produtos/tamanho`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/tamanho`
 
     const response = await fetch(url)
 

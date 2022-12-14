@@ -1,6 +1,6 @@
 const getPizzas = async () => {
 
-    const url = `http://localhost:8080/v1/produtos/pizza`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/pizza`
 
     const response = await fetch(url)
     const pizzas = await response.json()
@@ -10,7 +10,7 @@ const getPizzas = async () => {
 
 const getBebidas = async () => {
 
-    const url = `http://localhost:8080/v1/produtos/bebida`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/bebida`
 
     const response = await fetch(url)
     const bebidas = await response.json()
@@ -20,7 +20,7 @@ const getBebidas = async () => {
 
 const getFavoritos = async () => {
 
-    const url = `http://localhost:8080/v1/produtos/favoritos`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/favoritos`
 
     const response = await fetch(url)
     const favoritas = await response.json()
@@ -30,7 +30,7 @@ const getFavoritos = async () => {
 
 const getOfertas = async () => {
 
-    const url = `http://localhost:8080/v1/produtos/promocoes`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/promocoes`
 
     const response = await fetch(url)
     const ofertas = await response.json()
@@ -40,7 +40,7 @@ const getOfertas = async () => {
 
 const sendMessage = async (dados) => {
 
-    const url = 'http://localhost:8080/v1/mensagem'
+    const url = 'https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/mensagem'
 
     const options = {
         method: 'POST',
@@ -57,7 +57,7 @@ const sendMessage = async (dados) => {
 
 const addFavorito = async (id) => {
 
-    const url = `http://localhost:8080/v1/produtos/favoritos/${id}`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/favoritos/${id}`
 
     const options = {
         method: 'PUT'

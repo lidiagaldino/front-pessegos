@@ -1,6 +1,6 @@
 const logarUser = async (login, senha) => {
 
-    const url = `http://localhost:8080/v1/user/login`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/user/login`
 
     const usuario = {
         login: login,

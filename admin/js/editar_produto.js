@@ -348,7 +348,7 @@ const select = document.getElementById('tamanho')
 
 const addTamanho = async (preco, id_tamanho) => {
 
-    const url = `http://localhost:8080/v1/produto/tamanho/${localStorage.getItem('id_produto').split('-')[1]}`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produto/tamanho/${localStorage.getItem('id_produto').split('-')[1]}`
 
     const tamanho = {
         preco: preco,
@@ -410,7 +410,7 @@ selectTipo.addEventListener('change', () => {
 
 const desativarProduto = async (id) => {
 
-    const url = `http://localhost:8080/v1/produtos/${id}`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/produtos/${id}`
 
     const response = await fetch(url, {method: 'PUT'})
     const result = await response.json()

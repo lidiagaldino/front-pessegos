@@ -2,7 +2,7 @@ import '../../js/elementos/card-mensagem.js'
 
 const getMessages = async () => {
 
-    const url = `http://localhost:8080/v1/mensagem`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/mensagem`
 
     const response = await fetch(url)
     const message = await response.json()
@@ -13,7 +13,7 @@ const getMessages = async () => {
 
 const deleteMessage = async (id) => {
 
-    const url = `http://localhost:8080/v1/mensagem/${id}`
+    const url = `https://subtle-mochi-7b34b0.netlify.app/.netlify/functions/api/v1/mensagem/${id}`
 
     const response = await fetch(url, {method: 'delete'})
     const result = await response.json()
